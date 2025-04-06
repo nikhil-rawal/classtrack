@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { ADMIN_USERNAME, ADMIN_PASSWORD } from "../context/authUtils";
+import InputForm from "../components/InputForm";
 
 const Login = () => {
   const [userName, setUserName] = useState("");
@@ -35,31 +36,35 @@ const Login = () => {
         onSubmit={handleSubmit}
         className="flex flex-col border-2 items-center justify-center m-4 p-4 rounded-lg"
       >
+        {/* Username */}
         <div className="m-2 p-2">
           <label htmlFor="userName" className="m-1" />
           Username
-          {/* </label> */}
-          <input
-            className="m-1 border dark:border-white border-gray-900"
-            name="userName"
-            type="text"
-            placeholder="Username"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+          <InputForm
+            inputClass="m-1 border dark:border-white border-gray-900"
+            inputName="userName"
+            inputType="text"
+            inputPlaceholder="Username"
+            inputValue={userName}
+            inputOnChange={(e) => setUserName(e.target.value)}
+            inputRequired="required"
+            inputAutoComplete="off"
           />
         </div>
+        {/* Password */}
         <div className=" m-2 p-2">
           <label htmlFor="password" className="m-1" />
           Password
-          {/* </label> */}
-          <input
-            className="m-1 border dark:border-white border-gray-900"
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <InputForm
+            inputClass="m-1 border dark:border-white border-gray-900"
+            inputName="password"
+            inputType="password"
+            inputPlaceholder="Password"
+            inputValue={password}
+            inputOnChange={(e) => setPassword(e.target.value)}
+            inputRequired="required"
+            inputAutoComplete="off"
+          />{" "}
         </div>
         <button
           type="submit"
