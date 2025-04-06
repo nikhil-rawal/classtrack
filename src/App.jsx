@@ -6,6 +6,8 @@ import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import { useAuth } from "./context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import RegisterStudent from "./db/RegisterStudent";
+import AllStudents from "./db/AllStudents";
 
 function App() {
   const { authenticated, logout } = useAuth();
@@ -55,7 +57,11 @@ function App() {
         {!authenticated ? (
           <Route path="/" element={<Login />} />
         ) : (
-          <Route path="/dashboard" element={<Dashboard />} />
+          <>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/register" element={<RegisterStudent />} />
+            <Route path="/dashboard/allStudents" element={<AllStudents />} />
+          </>
         )}
       </Routes>
     </div>
